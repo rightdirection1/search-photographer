@@ -11,7 +11,7 @@ const router  = express.Router();
 var registerRouter = require('./routes/register');
 var loginRouter = require('./routes/login');
 var userProfile = require('./routes/userprofile');
-var categories = require('./routes/categories');
+let categories = require('./routes/categories');
 
 var bodyParser = require('body-parser');
 app.use(cors());
