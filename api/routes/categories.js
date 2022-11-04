@@ -2,16 +2,21 @@ var express = require("express");
 var router = express.Router();
 var db = require("../db");
 
-router.post("/categories", (req, res) => {
+router.get("/categories", (req, res) => {
  
- const name = req.body.name;
- const description = req.body.description;
+// const name = req.body.name;
+ //const description = req.body.description;
 
   db.query(
-    "INSERT INTO categories (description,name) VALUES  (?,?)",
-     [description, name]
+    "SELECT * FROM categories",(err, result) => {
+      if (err) {
+          console.log("There was an error in your query: " + err);
+      }
+      res.send(result);
+      console.log("Query Executed Successfully");
+      console.log(result)
+    }
   );
-
 });
 
 module.exports = router;

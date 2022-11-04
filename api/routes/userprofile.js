@@ -10,7 +10,7 @@ router.post("/userprofile", (req, res) => {
   const address = req.body.address;
   const city = req.body.city;
   const country = req.body.country;
-  const categoryId = 2; 
+  const categoryId = req.body.categoryId; 
   
   //Hardcored username for now
  // const username = "Lyubima";

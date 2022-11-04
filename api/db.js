@@ -8,6 +8,11 @@ const connection = mysql.createConnection({
   database: "photographers",
 });
 
-connection.connect();
+connection.connect((err) => {
+  if (err) {
+      console.log("There was an error connecting to the database: " + err);
+  }
+  console.log("Connected to the database");
+})
 
 module.exports = connection;
