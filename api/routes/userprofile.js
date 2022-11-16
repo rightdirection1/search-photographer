@@ -11,14 +11,22 @@ router.post("/userprofile", (req, res) => {
   const city = req.body.city;
   const country = req.body.country;
   const categoryId = req.body.categoryId; 
+  const username = req.body.username;
   
   //Hardcored username for now
  // const username = "Lyubima";
+ const result = db.query("select 1 from userprofiles where username = ?", username);
 
+ if(!result) {
   db.query(
-    "INSERT INTO userprofiles (firstname, lastname , address, city, country, categoryId) VALUES  (?, ?, ? ,?, ?, ?)",
-    [firstname, lastname, address, city, country, categoryId]   
+    "INSERT INTO userprofiles (username, firstname, lastname , address, city, country, categoryId) VALUES  (? ,?, ?, ? ,?, ?, ?)",
+    [username,firstname, lastname, address, city, country, categoryId]   
   );
+ } else {
+   db.query("UPDATE userprofiles SET firstname = ?,  lastname = ?, address = ?,  city = ?, country = ?, categoryId = ? where username = ?",
+   [firstname, lastname, address, city, country, categoryId, username])
+ }
+ 
 });
 
 module.exports = router;

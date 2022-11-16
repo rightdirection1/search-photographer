@@ -12,6 +12,7 @@ var registerRouter = require('./routes/register');
 var loginRouter = require('./routes/login');
 var userProfile = require('./routes/userprofile');
 let categories = require('./routes/categories');
+let users = require('./routes/users');
 
 var bodyParser = require('body-parser');
 app.use(cors());
@@ -23,6 +24,7 @@ app.use(registerRouter); // Register route
 app.use(loginRouter);    // Login route
 app.use(userProfile);    //  User Profile (photographer)
 app.use(categories);       // Categories
+app.use(users);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
